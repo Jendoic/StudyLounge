@@ -1,0 +1,97 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyLounge</title>
+{% include 'components/extensions/linksComponent.html' %}
+<style>
+
+</style>
+  </head>
+  <body style="font-family: ABeeZee;">
+    <header class="flex space-x-20 shadow-md p-2 fixed top-0 w-screen bg-white">
+      <a href="{% url 'home' %}  ">
+           <div class="ml-5 flex mt-2">
+    
+        <img class="w-10" src="{% static 'icons/logo.svg' %}" alt="" srcset="" />
+        <div class="text-gray-400 font-semibold mt-2 ml-2 mt-3 min-[320px]:text-black">
+          StudyLounge
+        </div>
+      </div>
+      </a>
+   
+      <div class="border-2 outline-none border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300  mt-2 flex hidden <<<<< md:block lg:block ">
+        <form action="{% url 'home' %}" method="GET">
+   <input 
+          type="search"name="q" id=""  placeholder="Search Posts"
+          class="  p-2 outline-none bg-transparent <<< md:w-96 lg:w-96" /> <button type="submit"><i class="fa-solid fa-magnifying-glass pt-3 pr-3 text-gray-400"></i></button>
+        </form>
+     
+      </div>
+<div class="flex lg:ml-16 bg-contain ">
+  {% if request.user.is_authenticated %}
+
+      {% if request.user.avatar.url %}
+  <div class="border-2 border-gray-300 rounded-full p-7 bg-no-repeat  bg-cover bg-center" style="background-image: url('{{request.user.avatar.url}}');">
+  </div>
+    {% endif %}
+
+       {% comment %} <img class="  cursor-pointer rounded-full" width="55" src="{{request.user.avatar.url}}" alt="" /> {% endcomment %}
+      
+         {% comment %} <img class="  cursor-pointer" width="55" src="{% static 'icons/lifestyle-students-talking-in-front-of-university-1.png' %}" alt="" /> {% endcomment %}
+    
+      
+ 
+
+  
+    
+      <p id="chevron-el" class="mt-5 ml-10 font-semibold font-sans text-base text-gray-400 cursor-pointer chevron-el <<< lg:hidden" onclick="navVisibility()"><i class="fa-solid fa-chevron-down text-gray-200"></i></p>
+      
+          <h1 class="mt-1 pl-2 text-gray-400 text-lg font-semibold hidden <<<< lg:block ">Welcome, {{request.user.username|title}} <span class="text-green-600 text-5xl font-bold animate-pulse ">.</span></h1>
+      {% else %}
+      <img class=" mr-5 cursor-pointer" width="50" src="{%  static 'icons/avatar.svg' %}" alt="" />
+        <p id="chevron-el" class="mt-4 ml-5 font-semibold font-sans text-base text-gray-400 cursor-pointer chevron-el <<< lg:hidden" onclick="navVisibility()"><i class="fa-solid fa-chevron-down text-gray-200"></i></p>
+      {% endif %}
+    
+      </div>
+
+      <div class="mt-4 hidden <<<<< lg:block">
+        <ul class="flex space-x-5">
+        {% if request.user.is_authenticated %}
+      <li class="mt-2 text-gray-400 hover:text-gray-700 focus:text-gray-700"><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+            <li class="text-gray-400 hover:text-gray-700 focus:text-gray-700"><a href="{% url 'login' %}">Login</a></li>
+             <li class="text-gray-400 hover:text-gray-700 focus:text-gray-700"><a href="{% url 'register' %}">Sign up</a><li>
+          {%endif%}
+         
+        </ul>
+      </div>
+
+      
+
+
+
+
+      <div class="fixed top-16 right-5 mr-5 bg-gray-50 p-4 rounded-lg mt-3 shadow-sm " id="auth-nav" style="display: none;">
+        <ul>
+          
+          {% if request.user.is_authenticated %}
+             <li class="text-gray-400 hover:text-gray-700 focus:text-gray-700"><a href="{% url 'logout' %}">Logout</a></li>
+             {% else %}
+            <li class="text-gray-400 hover:text-gray-700 focus:text-gray-700"><a href="{% url 'login' %}">Login</a></li>
+          <li class="text-gray-400 hover:text-gray-700 focus:text-gray-700"><a href="{% url 'register' %}">Sign up</a></li>
+          {% endif %}
+            
+        
+        </ul>
+      </div>
+    </header>
+  
+  {% block content %}
+    
+  {% endblock content %}
+  <script src= "{% static 'styles/js/index.js' %}"></script>
+   </body>
+</html>

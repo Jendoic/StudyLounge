@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyLounge</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Karla:wght@400&family=Kode+Mono:wght@400..700&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="glide.core.min.css">
+    <link rel="stylesheet" href="glide.theme.min.css">
+  </head>
+  <body>
+    <header
+      class="flex justify-between shadow-md p-2 fixed top-0 w-screen bg-white"
+    >
+      <div class="ml-5 flex mt-2">
+        <img class="w-10" src="tools/logo.svg" alt="" srcset="" />
+        <div class="text-gray-400 font-semibold mt-2 ml-2">StudyLounge</div>
+      </div>
+      <div id="nav-el"  class="pt-2 pr-7"><i class="fa-solid fa-bars fa-2xl <<<< lg:hidden"></i></div>
+
+      <div class="mr-9 text-gray-500 text-base mt-7 hidden <<< lg:block">
+        <ul class="flex space-x-5">
+          <li>Service</li>
+          <li>About us</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+    </header>
+           <div id="nav-content"  class="mr-1 text-gray-500 text-base font-semibold text-center float-right bg-white p-5 rounded-lg opacity-70 <<< lg:hidden" style="display: none; width:15rem; ">
+        <ul class="flex flex-col space-y-10 ">
+          <li>Service</li>
+          <li>About us</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+
+    <div class="mt-20">
+      <div
+        class="w-46 text-center leading-10 text-bold text-2xl p-16 bg-no-repeat bg-cover"
+        style="
+          font-family: kode mono, monospace;
+          background-image: url(tools/lifestyle-university-building.png);">
+        <span id="text-el">
+        </span>
+        <div>
+              <button
+          class="bg-red-50 p-3 mt-5 rounded-lg text-gray-400"
+          style="font-family: 'Inter'"
+        >
+          Get Started
+        </button>
+        </div>
+      
+      </div>
+
+      <!-- <div>
+        <img width="2000" src="tools/lifestyle-students-talking-in-front-of-university-1.png" alt="">
+      </div> -->
+    </div>
+    <div class="mt-10">
+      <h1 class="text-center text-2xl font-semibold" style="font-family:Inter;">StudyLounge</h1>
+      <p class="text-center pt-5 text-xl">Welcome to studyLounge, your dedicated space for collaborative learning and knowledge exchange. At studyLounge, we believe in the power of collective intelligence, and our platform is designed to bring individuals together to explore, discuss, and learn from one another.</p>
+</div>
+
+<div class="mt-20 h-5/6  ">
+    <p class="text-center text-2xl font-semibold" style="font-family: Inter;">Testimonial</p>
+    <div class=" mt-16  glide">
+  <div class="glide__track" data-glide-el="track">
+    <ul class="glide__slides">
+      <li class="glide__slide"><div class="w-5/12 h-5/ shadow-2xl 12  m-auto m-0 p-5 mb-10 rounded-lg">
+        <span><i class="fa-solid fa-quote-left fa-2xl text-red-100" ></i></span>
+      <p class="text-center">studyLounge has revolutionized our company's learning culture. The platform's dynamic virtual rooms, real-time discussions, and interactive tools align perfectly with our commitment to professional growth. studyLounge is now integral to fostering a dynamic and innovative learning environment at InnovateTech Solutions.</p>
+        <hr class="mt-5">    
+        <h3 class="mt-5 font-bold">Hezekiah Oladejo</h3>
+        <p class="text-xs text-gray-400">Founder</p>
+      </div></li>
+      <li class="glide__slide"><div class="w-5/12 h-5/ shadow-2xl 12  m-auto m-0 p-5 rounded-lg">
+        <span><i class="fa-solid fa-quote-left fa-2xl text-red-100"></i></span>
+      <p class="text-center">As Co-Founder, we've witnessed studyLounge's transformative impact at StudyLounge. Its dynamic virtual rooms and tools foster collaboration, aligning with our commitment to innovation and continuous learning..</p>
+        <hr class="mt-5">    
+        <h3 class="mt-5 font-bold">Andrew Onuh</h3>
+        <p class="text-xs text-gray-400">Co-founder</p>
+      </div></li>
+      <li class="glide__slide"><div class="w-5/12 h-5/ shadow-2xl 12  m-auto m-0 p-5 rounded-lg">
+        <span><i class="fa-solid fa-quote-left fa-2xl text-red-100" ></i></span>
+      <p class="text-center">studyLounge is a game-changer for team development at GlobalTech Innovations. Our team actively engages in virtual rooms, collaborates with interactive tools, contributing to improved performance.</p>
+        <hr class="mt-5">    
+        <h3 class="mt-5 font-bold">Franklin Elendu</h3>
+        <p class="text-xs text-gray-400">Manager</p>
+      </div></li>
+    </ul>
+  </div>
+  <div class="glide__arrows" data-glide-el="controls">
+    <button class=" glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fa-solid fa-chevron-left fa-2xl"></i></button>
+    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fa-solid fa-chevron-right fa-2xl"></i></button>
+  </div>
+</div>
+</div>
+<div class="mt-10 m-auto m-0 bg-gray-50 p-7 w-3/5 rounded-lg">
+
+    <p class="text-center text-xl">20K people are already enjoying our mailing list</p>
+ <input type="text"
+  placeholder="Email address"
+  class="mt-5 ml-4 p-2 rounded-lg" />
+  <button class="bg-black text-white hover:shadow-lg hover:opacity-80 hover:text-gray-400 p-2 rounded-lg">Submit</button>
+
+</div>
+
+<footer class="mt-10 bg-gray-600">
+  <div class="text-white flex justify-between">
+      <div class="ml-5 flex mt-2">
+        <img class="w-16" src="tools/logo.svg" alt="" srcset="" />
+        <div class="text-gray-400 font-semibold mt-6 ml-2 text-xl">StudyLounge</div>
+      </div>
+    
+    
+      <div class="mr-10 mt-3" >
+      <h3 class="text-2xl font-semibold text-center">Get in touch</h3>
+      <div class="pt-5">
+        <ul class="flex space-x-10">
+        <li><i class="fa-brands fa-linkedin  fa-2x"></i></li>
+        <li><i class="fa-brands fa-twitter fa-2x"></i></li>
+        <li><i class="fa-brands fa-instagram fa-2x"></i></li>
+        <li><i class="fa-brands fa-github-alt fa-2x"></i></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <h3 class="text-center text-xl pt-10 text-white"><i class="fa-regular fa-copyright"></i> 2024 <div>Design by<span class="font-black text-gray-400" style="font-family:kode mono"> Jendoic</span></div></h3>
+</footer>
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+  new Glide('.glide').mount()
+</script>
+  </body>
+</html>

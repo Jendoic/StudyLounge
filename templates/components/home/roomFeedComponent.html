@@ -1,0 +1,63 @@
+{% load static %}
+<div class="mt-10 mb-5 lg:w-11/12 w-screen"> 
+        <div class="flex justify-center space-x-60 hidden lg:flex">
+      <div class="">
+      <h5 class="font-sans text-lg font-semibold">STUDY LOUNGES</h5>
+      <p class="text-base font-sans text-gray-300">{{room_count}} Lounges Available</p>
+      </div>
+     <div class="bg-black p-3 mr-5 rounded-full ">
+      
+      {% if request.user.is_authenticated %}
+          <button class="text-gray-100 text-base font-semibold " id="open-modal"><i class="fa-solid fa-plus"></i>    Create Lounge</button>
+          {% else %}
+          <a href="{% url 'login'%}">
+              <button class="text-gray-100 text-base font-semibold" ><i class="fa-solid fa-plus"></i>    Create Lounge</button>
+          </a>
+          
+      {% endif %}
+        
+    
+     </div>
+    </div>
+
+
+
+  <!-- Rooms Start -->
+  
+  {% for room in rooms %}
+   <div class="w-2/3  m-auto m-0 bg-gray-50 p-5 mt-5 rounded-lg shadow-lg ">
+      <div class="flex justify-between">
+        <div class="flex  space-x-3">
+      <div class="">
+       
+        {% if room.host.avatar.url %}
+  <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{room.host.avatar.url}}'); width:10px">
+  </div>
+    {% endif %}
+    
+        </div>
+        <p class="mt-4"><a href="{% url 'user-profile' room.host.id %}">{{room.host.username|title}}</a></p>
+        </div>
+           <p class="text-xs text-end">{{room.created|timesince}} ago</p>
+       
+      </div>
+
+         <h2 class="pt-5 text-xl font-semibold"><a href="{% url 'room' room.id %}">{{room.name}}</a></h2>
+   
+
+        
+    
+      <hr class="mt-5">
+      <div class="flex justify-between mt-5">
+        <p> <a href="{{room.participants.all.count}}"><i class="fa-solid fa-people-group text-gray-200"></i>Joined</a></p>
+        <span class="bg-gray-200 p-1 rounded-lg text-xs"> {{room.topic.name}}</span>
+      </div>
+    </div>  
+
+  {% endfor %}
+    
+
+     
+    
+    <!-- End rooms -->
+  </div>

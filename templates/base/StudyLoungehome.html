@@ -1,0 +1,27 @@
+{% extends "components/extensions/navBarComponent.html" %}
+{% load static %}
+
+
+{% block content %}
+  
+
+  
+{% include "components/home/smallScreenComponent.html" %}
+
+{% include "components/home/smallScreenComponent2.html" %}
+
+ 
+<div class="lg:mt-20 flex justify-between ">
+  {% include 'components/home/browseTopicComponent.html' %} 
+
+  {% include 'components/home/roomFeedComponent.html' %}
+
+  {% include 'components/home/recentActivitiesComponent.html' %}
+
+</div>
+  <!-- Create Room Modal -->
+ {% include 'components/home/createRoomModalComponent.html' %}
+
+{% endblock content %}
+
+ 

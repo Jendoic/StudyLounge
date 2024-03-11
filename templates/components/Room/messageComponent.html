@@ -1,0 +1,22 @@
+  
+            {% if request.user.is_authenticated %}
+             <form action="" method="POST">
+                 <div class="  p-5  flex justify-center space-x-10" style="width: 550px;">
+               
+                   
+                        {% csrf_token %}
+                <div class="rounded-2xl border-2 border-gray-400 w-auto">
+                     <span class="mt-4 ml-4"><i class="fa-solid fa-plus"></i></span>
+                      <input id="input-el" class="p-3 w-52 bg-transparent  outline-none"  type="text" name="body"  placeholder="Write a message..." oninput="checkInput()">
+
+                     
+                    <span class=""><i class="fa-solid fa-camera"></i></span>
+                    <span class="ml-5 mr-2"><i class="fa-solid fa-microphone"></i></span>
+  
+                </div>
+                <button type="submit"> <span id="send-btn" class="bg-gray-500 p-3 mt-1 text-gray-300 rounded-3xl" style="display: none;"><i class="fa-solid fa-paper-plane"></i></span></button>
+
+            </div>
+            </form>
+            {% endif %}
+                

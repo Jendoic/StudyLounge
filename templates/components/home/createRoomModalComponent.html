@@ -1,0 +1,44 @@
+
+  <div id="modal"  class="" style="display: none; position:fixed; top:-0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5)">
+
+    <div id="modal-content" class=" m-auto m-0 md:mt-20 " style="width: 70%;">
+      <div class=" bg-gray-50  mdal m-auto m-0 rounded-lg">
+        
+      <div class="flex bg-gray-400 text-gray-200 rounded-t-lg p-3 pl-5 font-semibold"><span class="pl-5 cursor-pointer" id="close-modal"><i class="fa-regular fa-circle-xmark "></i></span><p class="pl-5">Create Lounge</p></div>
+
+
+      <div class="p-5">
+         <form action="" method="POST">
+      <div class="flex flex-col space-y-5">
+       
+          {% csrf_token %}
+          <label for="room_topic">Topic</label>
+      <div class="p-3  bg-transparent outline-none border-gray-200 border-2  rounded-sm">
+            <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" />
+            <datalist id="topic-list">
+              <select id="room_topic">
+                {% for topic in topics %}
+                <option value="{{topic.name}}">{{topic.name}}</option>
+                {% endfor %}
+              </select>
+            </datalist>
+      </div>
+      <!-- <input class="p-3  bg-transparent focus:outline-none focus:ring-2 focus:border border-gray-200 border-2 focus:ring-gray-200 rounded-sm"  type="text" placeholder="Room Heading"> -->
+       <label for="room_topic">Lounge Name</label>
+         <div class="p-3  bg-transparent outline-none border-gray-200 border-2  rounded-sm"> 
+      {{form.name}}
+      </div>
+      <!-- <input class="p-3  bg-transparent focus:outline-none focus:ring-2 focus:border border-gray-200 border-2 focus:ring-gray-200 rounded-sm"  type="textarea" placeholder="description"> -->
+       <label for="room_topic">Lounge Description</label>
+      <div class="p-3  bg-transparent outline-none border-gray-200 border-2  rounded-sm h-48" style="outline: none;"> 
+      {{form.description}}
+      </div>
+      <button type="submit" class="mt-5 p-3 bg-gray-400 w-auto rounded-lg font-semibold text-gray-200 hover:opacity-80">Create</button>
+    
+      </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  </div>

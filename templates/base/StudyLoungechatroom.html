@@ -1,0 +1,24 @@
+{% extends "components/extensions/roomNavComponent.html" %}
+{% load static %}
+
+
+{% block content %}
+  
+
+  
+{% comment %} End Header Section {% endcomment %}
+
+{% include 'components/Room/CUDComponent.html' %}
+
+
+<div class="flex ">
+ {% include 'components/Room/chatroomComponent.html' %}
+ {% include 'components/Room/participantComponent.html' %}
+</div>
+       
+  
+
+ {% include 'components/Room/updateRoomModalComponent.html' %}
+
+
+{% endblock content %}
