@@ -1,6 +1,6 @@
 {% load static %}
-<div class="mt-10 mb-5 lg:w-11/12 w-screen"> 
-        <div class="flex justify-center space-x-60 hidden lg:flex">
+<div class="mt-10 mb-5 lg:w-11/12 w-screen "> 
+        <div class="flex justify-center space-x-10 <<<< md:space-x-60  lg:flex lg:space-x-60">
       <div class="">
       <h5 class="font-sans text-lg font-semibold">STUDY LOUNGES</h5>
       <p class="text-base font-sans text-gray-300">{{room_count}} Lounges Available</p>
@@ -23,8 +23,8 @@
 
 
   <!-- Rooms Start -->
-  
-  {% for room in rooms %}
+  <!-- <div class="overflow-y-scroll h-1/4 container"> -->
+{% for room in rooms %}
    <div class="w-2/3  m-auto m-0 bg-gray-50 p-5 mt-5 rounded-lg shadow-lg ">
       <div class="flex justify-between">
         <div class="flex  space-x-3">
@@ -55,6 +55,10 @@
     </div>  
 
   {% endfor %}
+
+  <!-- </div>
+   -->
+  
     
 
      

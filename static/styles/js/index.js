@@ -1,49 +1,43 @@
-// const textEl = document.querySelector("#text-el")
+const textEl = document.querySelector("#text-el")
 
-// const text =
-//   "Embark on a learning adventure like never before! At StudyLounge, your journey begins with vibrant discussions, interactive rooms, and a community dedicated to expanding knowledge together.";
-
-// // const text = [
-// //   "Unlock the doors to knowledge at StudyLounge. Join vibrant rooms,explore diverse topics, and embark on a journey of collaborativelearning in real-time!",
-
-// //   "Welcome to a world of boundless learning at StudyLounge. Dive into dynamic discussions, create your rooms, and let the collaborative spirit of knowledge elevate your learning experience!",
-
-// //   "Embark on a learning adventure like never before! At StudyLounge, your journey begins with vibrant discussions, interactive rooms, and a community dedicated to expanding knowledge together.",
-// // ];
+const text =
+  "Embark on a learning adventure like never before! At StudyLounge, your journey begins with vibrant discussions, interactive lounges, and a community dedicated to expanding knowledge together.";
 
 
-//   function textTypingEffect(element, text, i = 0) {
-//     if (i === 0) {
-//       element.textContent += " ";
-//     }
-//     element.textContent += text[i];
+
+
+  function textTypingEffect(element, text, i = 0) {
+    if (i === 0) {
+      element.textContent += " ";
+    }
+    element.textContent += text[i];
  
 
-//     if (i === text.length - 1) {
-//       return;
-//     }
-//       setTimeout(() => textTypingEffect(element, text, i + 1), 50);
+    if (i === text.length - 1) {
+      return;
+    }
+      setTimeout(() => textTypingEffect(element, text, i + 1), 50);
      
-// };
+};
 
-//   textTypingEffect(textEl, text);
-
-
-// const navEl = document.querySelector("#nav-el")
-// const navContent = document.querySelector("#nav-content");
+  textTypingEffect(textEl, text);
 
 
-// navEl.addEventListener('click', () => {
-//   if (navContent.style.display === 'none') {
-//     navContent.style.display = 'block'
-//     navEl.innerHTML = `<i class="fa-solid fa-xmark fa-2xl"></i>`
-//   }
-//   else {
-//     navContent.style.display = 'none'
-//        navEl.innerHTML = `<i class="fa-solid fa-bars fa-2xl <<<< lg:hidden">`
-//   }
+const navEl = document.querySelector("#nav-el")
+const navContent = document.querySelector("#nav-content");
+
+
+navEl.addEventListener('click', function(){
+  if (navContent.style.display === 'none') {
+    navContent.style.display = 'block'
+    navEl.innerHTML = `<i class="fa-solid fa-xmark fa-2xl"></i>`
+  }
+  else {
+    navContent.style.display = 'none'
+       navEl.innerHTML = `<i class="fa-solid fa-bars fa-2xl <<<< lg:hidden">`
+  }
  
-// })
+})
 
 
 
@@ -66,7 +60,7 @@ const openModal = document.getElementById("open-modal")
 const closeModal = document.getElementById("close-modal");
 const modal = document.getElementById("modal")
 
-openModal.addEventListener('click', () => {
+openModal.addEventListener("click", function(){
   if (modal.style.display === "none") {
     modal.style.display = "block"
   }
@@ -76,7 +70,7 @@ openModal.addEventListener('click', () => {
 })
 
 
-closeModal.addEventListener("click", () => {
+closeModal.addEventListener("click", function(){
   if (modal.style.display === "block") {
     modal.style.display = "none";
   } 

@@ -6,7 +6,9 @@
      <span class="text-2xl text-gray-400 cursor-pointer"><a href="{% url 'home' %}"><i class="fa-solid fa-circle-arrow-left"></i></a></span>
      {% if request.user == user %}
        <span id="open-modal" class="text-2xl text-gray-400 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></span>
+            {% if request.user.is_superuser %}
       <span class="text-2xl cursor-pointer"> <a href=""><i class="fa-solid fa-trash" style="color: #db0606;"></i></a><span>
+        {%endif%}
      {% endif %}
       
     </div>
@@ -25,11 +27,17 @@
     {% endif %}
         </div>
               <h1 class=" text-3xl font-semibold text-center">{{user.username}}</h1>
-              {% if user.name != None %}
-                <p class="p-1 rounded-lg text-xl text-center"> {{user.name|title}}</p>
-              {% endif %}
+       
+                <p class="p-1 rounded-lg text-xl text-center"> {{user.user_name|title}}</p>
+       
+              
 
-              <p class="text-center">{{user.bio}}</p>
+        
+        {% if user.bio != none %}
+             <p class="text-center">{{user.bio}}</p>
+        {% endif %}
+          
+             
               
 
         </div>
@@ -82,7 +90,7 @@
     <!-- End rooms -->
   </div>
 
-  {% include 'components/home/recentActivitiesComponent.html' %}
+  <!-- {% include 'components/home/recentActivitiesComponent.html' %} -->
 
 </div>
 

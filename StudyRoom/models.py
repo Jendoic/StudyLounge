@@ -11,7 +11,11 @@ class CustomUser(AbstractUser):
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS =['username']
-
+    @property
+    def user_name(self):
+        if self.name:
+            return self.name
+        return ''
    
     
     
@@ -42,6 +46,7 @@ class Message(models.Model):
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(CustomUser, related_name='liked_message', blank=True)
     
     class Meta:
         ordering = ['updated', 'created']

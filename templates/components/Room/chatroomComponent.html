@@ -31,12 +31,36 @@
         {% if messages.user != messages.room.host %}
              
         <div class="flex w-auto  pl-12 <<< lg:pl-0">
-            <div class=" mt-20  ml-4 ">
+
+          
+     <div class=" mt-20  ml-4 ">
     {% if messages.user.avatar.url %}
   <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{messages.user.avatar.url}}');">
   </div>
     {% endif %}
           </div>
+
+  <div class="flex flex-col space-y-3 mt-10 pl-3 ">
+    <span id="like-count" data-message-id="{{messages.id}}" class="text-xs text-gray-400 cursor-pointer">
+  
+      {% if request.user in messages.likes.all %}
+      <a href="{% url 'like-message' messages.id %}"><i class="fa-solid fa-heart" style="color: #ec092b;"></i></a>
+      {% else %}
+      <a href="{% url 'like-message' messages.id %}"><i class="fa-regular fa-heart" style="color: #ec092b;"></i></a>
+      {% endif %}
+  
+      <span id="like-count"> {{messages.likes.count}}</span></span>
+  
+    {% if request.user == messages.user %}
+    <span class="text-xs text-gray-400 cursor-pointer"><a href="{% url 'edit-message' messages.id %}"><i
+          class="fa-solid fa-pen-to-square"></i></a></span>
+  
+    <span class="cursor-pointer text-xs"> <a href="{% url 'delete-message' messages.id %}"><i class="fa-solid fa-trash"
+          style="color: #db0606;"></i></a><span></span>
+      {% endif %}
+  
+  </div>
+
             <div class="bg-gray-200 w-72 p-5 mt-7 ml-1 rounded-r-3xl rounded-tl-2xl">
                  <span class="text-xs text-gray-400">{{messages.user.username}}</span>
                 <p class="text-base m-1">
@@ -44,18 +68,42 @@
             </p>
              </div>
              
+             
          </div>
      {% endif %}
+    
 
 
            {% if messages.user == messages.room.host %}
-        <div class="flex  pl-32 <<< lg:56 lg:pl-60">
-        <div class="bg-gray-300 w-72 p-4 mt-7 rounded-l-3xl  rounded-tr-2xl ">
+        <div class="flex  pl-28 <<< md:pl-60 lg:56 lg:pl-60">
+     
+        <div class="bg-gray-300 w-72 p-4 mt-7 rounded-l-3xl  rounded-tr-2xl " style="height: fit-content;" >
             <span class="text-xs text-gray-400">{{messages.room.host.username}}</span>
         <p class="text-base m-1">{{messages.body}}
         </p>
         </div>
+             <div class="flex flex-col space-y-3 mt-10 pl-3 ">
+                    <span id="like-count"data-message-id="{{messages.id}}" class="text-xs text-gray-400 cursor-pointer">
+                      
+                      {% if request.user in messages.likes.all %}
+                      <a href="{% url 'like-message' messages.id %}"><i class="fa-solid fa-heart" style="color: #ec092b;"></i></a>
+                        {% else %}
+                   <a href="{% url 'like-message' messages.id %}"><i class="fa-regular fa-heart" style="color: #ec092b;"></i></a>
+                      {% endif %}
+                        
+                    <span id="like-count"> {{messages.likes.count}}</span></span>
+          
+                  {% if request.user == messages.user %}
+                   <span class="text-xs text-gray-400 cursor-pointer"><a href="{% url 'edit-message' messages.id %}"><i class="fa-solid fa-pen-to-square"></i></a></span>
+
+                    <span class="cursor-pointer text-xs"> <a href="{% url 'delete-message' messages.id %}"><i class="fa-solid fa-trash" style="color: #db0606;"></i></a><span></span>
+            {% endif %}
+
+            </div>
         <div class="mt-20 ml-1">
+       
+          
+       
     {% if messages.room.host.avatar.url %}
   <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{messages.room.host.avatar.url}}'); width:10px">
   </div>
@@ -65,6 +113,7 @@
         </div>
           {% endif %}
  {% endfor %}
+         
 
         {% else %}
         <div class="flex w-auto flex-start animate-pulse">
@@ -104,3 +153,8 @@
              
         </div>
     </div>
+
+
+    
+
+ 

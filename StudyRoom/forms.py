@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Room, CustomUser
+from .models import Room, CustomUser, Message
 from django.contrib.auth.models import User
 
 
@@ -23,6 +23,12 @@ class UserForm(ModelForm):
               'bio': forms.Textarea(attrs={'placeholder':'Tell us about yourself', 'id': 'wordCount'}),
              
         }
+class EditMessage(ModelForm):
+    class Meta:
+        model = Message
+        fields = ['body']
+        exclude = ['user', 'room']
+        
         
 class CustomUserForm(UserCreationForm):
     password1 = forms.CharField(label='Password',  widget=forms.PasswordInput(attrs={'id':'password1' ,'placeholder':'Password', }))
