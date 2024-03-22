@@ -6,9 +6,7 @@
      <span class="text-2xl text-gray-400 cursor-pointer"><a href="{% url 'home' %}"><i class="fa-solid fa-circle-arrow-left"></i></a></span>
      {% if request.user == user %}
        <span id="open-modal" class="text-2xl text-gray-400 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></span>
-            {% if request.user.is_superuser %}
-      <span class="text-2xl cursor-pointer"> <a href=""><i class="fa-solid fa-trash" style="color: #db0606;"></i></a><span>
-        {%endif%}
+     
      {% endif %}
       
     </div>
@@ -26,7 +24,7 @@
   </div>
     {% endif %}
         </div>
-              <h1 class=" text-3xl font-semibold text-center">{{user.username}}</h1>
+              <h1 class=" text-3xl font-semibold text-center">{{user.username|title}}</h1>
        
                 <p class="p-1 rounded-lg text-xl text-center"> {{user.user_name|title}}</p>
        
@@ -94,13 +92,17 @@
 
 </div>
 
+<style>
+  .cont::-webkit-scrollbar{
+    width: 0px;
+  }
+</style>
 
 
-
-   <div id="modal"  class="" style="display: none; position:fixed; top:-0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5)">
+   <div id="modal"  class="z-20" style="display: none; position:fixed; top:-0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5)">
 
     <div id="modal-content" class=" m-auto m-0 " style="width: 70%;">
-      <div class=" bg-gray-50  m-auto m-0 rounded-lg">
+      <div class=" bg-gray-50  m-auto m-0 rounded-lg ">
         
       <div class="flex bg-gray-400 text-gray-200 rounded-t-lg p-3 pl-5 font-semibold"><span class="pl-5 cursor-pointer" id="close-modal"><i class="fa-regular fa-circle-xmark "></i></span><p class="pl-5">Update Profile</p></div>
 
@@ -108,9 +110,13 @@
     
       <div class="p-5">
          <form action="" method="POST">
-      <div class="flex flex-col space-y-5">
+      <div class="flex flex-col space-y-5 overflow-y-scroll cont" style="height: 35rem; "  >
        
           {% csrf_token %}
+          
+          <div class="p-3  bg-transparent outline-none border-gray-200 border-2  rounded-sm">
+            {{form.avatar}}
+          </div>
       <div class="p-3  bg-transparent outline-none border-gray-200 border-2  rounded-sm">
             {{form.username}} 
       </div>
@@ -133,25 +139,20 @@
   </div>
   </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Set the character limit (change this value as needed)
-        var characterLimit = 50;
-      let initChar = 0
+   const openModal = document.getElementById('open-modal');
+   const modal = document.getElementById('modal')
 
-        // Get the input element
-        var inputElement = document.getElementById('wordCount');
-        const charEl = document.getElementById('char-el')
+   openModal.addEventListener('click', function(){
+    if(modal.style.display === 'none'){
+      modal.style.display = 'block'
+    }
+   })
 
-        // Attach an input event listener to the input element
-        inputElement.addEventListener('input', function () {
-            // Trim the input if it exceeds the character limit
-            if (inputElement.value.length > characterLimit) {
-                inputElement.value = inputElement.value.slice(0, characterLimit);
-             
-                 
-            }
-        });
-    });
+   window.onclick = (event) =>{
+    if(event.target === modal){
+      modal.style.display = 'none'
+    }
+   }
 </script>
 
 {% endblock content %}

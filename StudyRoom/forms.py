@@ -15,7 +15,7 @@ class RoomForm(ModelForm):
 class UserForm(ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['username','email', 'name', 'bio']
+        fields = ['username','email', 'name', 'bio', 'avatar']
         widgets = {
             'username': forms.TextInput(attrs={'placeholder':'Username'}),
               'email': forms.TextInput(attrs={'placeholder':'Abc@gmail.com'}),

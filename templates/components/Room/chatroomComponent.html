@@ -35,8 +35,10 @@
           
      <div class=" mt-20  ml-4 ">
     {% if messages.user.avatar.url %}
+    <a href="{% url 'user-profile' messages.user.id %}">
   <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{messages.user.avatar.url}}');">
   </div>
+  </a>
     {% endif %}
           </div>
 
@@ -105,8 +107,10 @@
           
        
     {% if messages.room.host.avatar.url %}
+    <a href="{% url 'user-profile' messages.room.host.id %}">
   <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{messages.room.host.avatar.url}}'); width:10px">
   </div>
+  </a>
     {% endif %}
         </div>
 

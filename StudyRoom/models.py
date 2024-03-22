@@ -5,12 +5,12 @@ class CustomUser(AbstractUser):
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    
     avatar = models.ImageField(null=True, default="avatar.svg")
     
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS =['username']
+    
     @property
     def user_name(self):
         if self.name:

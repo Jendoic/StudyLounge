@@ -56,31 +56,31 @@ function navVisibility() {
 }
 
 
-const openModal = document.getElementById("open-modal")
-const closeModal = document.getElementById("close-modal");
-const modal = document.getElementById("modal")
+// const openModal = document.getElementById("open-modal")
+// const closeModal = document.getElementById("close-modal");
+// const modal = document.getElementById("modal")
 
-openModal.addEventListener("click", function(){
-  if (modal.style.display === "none") {
-    modal.style.display = "block"
-  }
-  else {
-    modal.style.display ="none"
-  }
-})
+// openModal.addEventListener("click", function(){
+//   if (modal.style.display === "none") {
+//     modal.style.display = "block"
+//   }
+//   else {
+//     modal.style.display ="none"
+//   }
+// })
 
 
-closeModal.addEventListener("click", function(){
-  if (modal.style.display === "block") {
-    modal.style.display = "none";
-  } 
-});
+// closeModal.addEventListener("click", function(){
+//   if (modal.style.display === "block") {
+//     modal.style.display = "none";
+//   } 
+// });
 
-window.onclick = (e) => {
-  if (e.target == modal) {
-      modal.style.display = 'none'
-  }
-}
+// window.onclick = (e) => {
+//   if (e.target == modal) {
+//       modal.style.display = 'none'
+//   }
+// }
 
 
 

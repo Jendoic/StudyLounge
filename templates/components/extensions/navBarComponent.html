@@ -8,7 +8,7 @@
 {% include 'components/extensions/linksComponent.html' %}
   </head>
   <body style="font-family: ABeeZee; height:100%">
-    <header class="flex space-x-20 shadow-md p-2 fixed top-0 w-screen bg-white">
+    <header class="flex space-x-20 shadow-md p-2 fixed top-0 w-screen bg-white z-20">
       <a href="{% url 'home' %}  ">
            <div class="ml-5 flex mt-2">
     
@@ -31,8 +31,10 @@
   {% if request.user.is_authenticated %}
 
       {% if request.user.avatar.url %}
+      <a href="{% url 'user-profile' request.user.id %}">
   <div class="border-2 border-gray-300 rounded-full p-7 bg-no-repeat  bg-cover bg-center" style="background-image: url('{{request.user.avatar.url}}');">
   </div>
+  </a>
     {% endif %}
 
        {% comment %} <img class="  cursor-pointer rounded-full" width="55" src="{{request.user.avatar.url}}" alt="" /> {% endcomment %}
