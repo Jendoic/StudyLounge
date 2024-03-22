@@ -2,6 +2,11 @@
 
 import os
 from pathlib import Path
+import cloudinary
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,12 +16,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jn3kqz_knz+3v$aki@_iby#!t*!q@os%8dmf7!ii!xk28kgs1z'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -33,7 +38,7 @@ INSTALLED_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-        'cloudinary',
+    'cloudinary',
     'cloudinary_storage',
 ]
 
@@ -83,11 +88,11 @@ WSGI_APPLICATION = 'StudyLounge.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
-            'NAME': 'railway',
-            'USER': 'postgres',
-            'PASSWORD': 'PbRWOJqBtfTRaQEXXBMVaHxPlUQvApql',
-            'HOST': 'monorail.proxy.rlwy.net',
-            'PORT': '21653',
+            'NAME': env('DATABASE_NAME'),
+            'USER': env('DATABASE_USER'),
+            'PASSWORD': env('DATABASE_PASSWORD'),
+            'HOST': env('DATABASE_HOST'),
+            'PORT': env('DATABASE_PORT'),
         }
     }
 
@@ -148,12 +153,12 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'dsbsdt2dt',
-#     'API_KEY': '675627869677372',
-#     'API_SECRET': 'sHT9Hho1K3cJyxZyw38F_n2Rl-A',
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY':  env('CLOUD_KEY'),
+    'API_SECRET': env('CLOUD_SECRET'),
+}
 
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
