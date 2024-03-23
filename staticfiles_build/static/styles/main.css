@@ -1,0 +1,50 @@
+.container::-webkit-scrollbar {
+  width: 0px; /* Set the width of the scrollbar */
+}
+
+/* Handle on hover */
+.container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Set the color of the scrollbar handle */
+.container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px; /* Set the radius of the scrollbar handle */
+}
+
+/* Set the color of the scrollbar track */
+.container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+
+
+    .mdal{
+      width: 70%;
+      height:20%
+      
+    }
+    select{
+      background: transparent;
+      padding: 4px;
+      outline: none;
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+
+    input{
+      background:transparent;
+      padding: 4px;
+      outline: none;
+      width: 100%;
+    }
+     textarea{
+      background: transparent;
+      outline: none;
+      width: 100%;
+      
+    }
+
+  
