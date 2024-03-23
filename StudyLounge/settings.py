@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     'cloudinary',
     'cloudinary_storage',
+    'whitenoise',
 ]
 
 LOCAL_APP = [
