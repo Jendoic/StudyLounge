@@ -24,7 +24,7 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
@@ -52,6 +52,7 @@ LOCAL_APP = [
 ]
 
 INSTALLED_APPS += LOCAL_APP + THIRD_PARTY_APPS
+
 
 AUTH_USER_MODEL ='StudyRoom.CustomUser'
 
@@ -90,6 +91,9 @@ WSGI_APPLICATION = 'StudyLounge.wsgi.app'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+
+
 DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
