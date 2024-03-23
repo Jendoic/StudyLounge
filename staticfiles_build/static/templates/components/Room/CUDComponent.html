@@ -1,0 +1,9 @@
+{% comment %} {Back, Update, Delete} {% endcomment %}
+    <div class="fixed left-10  space-y-7 w-10 flex flex-col mt-20">
+     <span class="text-2xl text-gray-400 cursor-pointer"><a href="{% url 'home' %}"><i class="fa-solid fa-circle-arrow-left"></i></a></span>
+     {% if room.host == request.user or request.user.is_superuser %}
+       <span id="open-modal" class="text-2xl text-gray-400 cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></span>
+      <span class="text-2xl cursor-pointer"> <a href="{% url 'delete-room' room.pk %}"><i class="fa-solid fa-trash" style="color: #db0606;"></i></a><span>
+     {% endif %}
+      
+    </div>

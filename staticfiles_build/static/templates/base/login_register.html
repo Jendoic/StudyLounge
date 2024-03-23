@@ -1,0 +1,92 @@
+{% include 'components/extensions/linksComponent.html' %}
+{% load static %}
+ {% include 'components/extensions/messagesExt.html '%}
+<main class="  m-auto m-0 mt-16 rounded-lg <<< md:w-2/4 md:bg-gray-50 md:shadow-2xl  lg:shadow-2xl lg:w-2/4 lg:bg-gray-50 p-5" style=" font-family: ABeeZee;">
+
+
+  {% if page == 'login' %}
+  <div class="container ">
+
+        <h2 class="text-center font-semibold text-3xl pt-5">Find your study partner</h2>
+       
+
+        <form class="form" action="" method="POST">
+          {% csrf_token %}
+          <div class="flex flex-col space-y-5 m-auto m-0 mt-10 <<<<lg:w-auto lg:p-6" >
+              <div class="">
+            <input class="border-2 border-gray-200 p-3 rounded-lg" name="email" type="email" placeholder="e.g. Abc@gmail.com">
+          </div>
+
+          <div class="border-2 border-gray-200 p-3 rounded-lg flex">
+            <input id="password-el" name="password" type="password"
+              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+                <span class="cursor-pointer mt-2" id="toggle-el"  onclick="visibilityToggle()"><i class="fa-solid fa-eye-slash text-gray-500"></i> </span>
+                </div>
+                 <button class="p-3 bg-gray-400 w-2/3 m-auto m-0 rounded-lg hover:bg-gray-500" type="submit">Login</button>
+          </div>
+
+         
+          </div>
+        
+         
+               
+
+       
+        </form>
+
+        <div class="flex space-x-1 justify-center pb-5 ">
+          <p class="text-center">Haven't signed up yet?</p>
+          <a href="{% url 'register' %}" class="text-blue-600">Sign Up</a>
+        </div>
+
+      </div>
+ 
+  {% else %}
+  <div class="container ">
+
+        <h2 class="text-center font-semibold text-3xl pt-5">Find your study partner</h2>
+
+       <form class="form" action="" method="POST">
+          {% csrf_token %}
+      <div class="flex flex-col space-y-3 m-auto m-0 mt-5" style="width: 80%;">
+
+       
+              <div class="border-2 border-gray-200 p-3 rounded-lg">
+            {{form.username}}
+          </div>
+
+
+             <div class="border-2 border-gray-200 p-3 rounded-lg">
+           {{form.email}}
+          </div>
+
+       
+          <div class="border-2 border-gray-200 p-3 rounded-lg flex">
+           {{form.password1}}
+          <span class="cursor-pointer mt-2" id="toggle"  onclick="visibilityToggle1()"><i class="fa-solid fa-eye-slash text-gray-500"></i> </span>
+          </div>
+
+          <div class="border-2 border-gray-200 p-3 rounded-lg flex">
+           {{form.password2}}
+             <span class="cursor-pointer mt-2" id="toggle-comfirm" onclick="visibilityToggle2()"><i class="fa-solid fa-eye-slash text-gray-500"></i> </span>
+          </div>
+          <button class="p-3 bg-gray-400 w-2/3 m-auto m-0 rounded-lg text-gray-200 hover:bg-gray-500" type="submit">Sign up</button>
+          </div>
+
+
+
+        </form>
+
+        <div class="flex space-x-1 justify-center pb-5 ">
+          <p class="text-center">Already signed up?</p>
+          <a href="{% url 'login' %}" class="text-blue-600">Login</a>
+        </div>
+
+      </div>
+
+
+  {% endif %}
+<script>
+  {% include 'components/extensions/jsExt.html' %}
+</script>
+</main>

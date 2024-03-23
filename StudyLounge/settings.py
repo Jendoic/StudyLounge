@@ -1,30 +1,27 @@
-
-
 import os
 from pathlib import Path
-import cloudinary
 import environ
-from dotenv import load_dotevn
-
-
-
-load_dotevn()
-
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Env 
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+DEBUG = env.bool("DJANGO_DEBUG",False)
+
+
+
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
@@ -45,6 +42,7 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     'cloudinary',
     'cloudinary_storage',
+    'whitenoise',
 ]
 
 LOCAL_APP = [
@@ -71,8 +69,7 @@ ROOT_URLCONF = 'StudyLounge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR/'templates'],
+        'DIRS':[os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,11 +90,11 @@ WSGI_APPLICATION = 'StudyLounge.wsgi.app'
 DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql',
-            'NAME': os.environ.get('DATABASE_NAME'),
-            'USER': os.environ.get('DATABASE_USER'),
-            'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-            'HOST': os.environ.get('DATABASE_HOST'),
-            'PORT': os.environ.get('DATABASE_PORT'),
+            'NAME': env.str('DATABASE_NAME'),
+            'USER': env.str('DATABASE_USER'),
+            'PASSWORD': env.str('DATABASE_PASSWORD'),
+            'HOST': env.str('DATABASE_HOST'),
+            'PORT': env.int('DATABASE_PORT'),
         }
     }
 
@@ -159,11 +156,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY':  os.environ.get('CLOUD_KEY'),
-    'API_SECRET': os.environ.get('CLOUD_SECRET'),
+    'CLOUD_NAME': env.str('CLOUD_NAME'),
+    'API_KEY':  env.str('CLOUD_KEY'),
+    'API_SECRET': env.str('CLOUD_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

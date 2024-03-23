@@ -1,0 +1,164 @@
+ {% load static %}
+ <div class="mt-20 p-3 w-52 flex flex-col justify-center items-center text-center m-auto m-0">
+
+        <div>
+            <h1 class=" text-3xl font-semibold">{{room.name}}</h1>
+            <p class="pt-2">hosted by</p>
+         <div class="   p-1 m-auto m-0" style="width: fit-content;">
+            {% if room.host.avatar.url %}
+  <div class="border-2 border-gray-300 rounded-full p-7 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{room.host.avatar.url}}'); width:10px">
+  </div>
+    {% endif %}
+        </div>
+             <p class="mt-3 font-semibold">{{room.host.username}}</p>
+              <span class="bg-gray-200 p-1 rounded-lg text-xs"> {{room.topic}}</span>
+
+        </div>
+
+    <div class="">
+            <div class=" bg-gray-50  mt-10 ml-5 rounded-lg container  overflow-y-scroll overscroll-contain flex flex-col lg:w-full " style="height:400px; ">
+
+        
+        {% if request.user.is_authenticated %}
+        
+        
+        {% for messages in room_message %}
+            
+       
+       
+
+        
+        {% if messages.user != messages.room.host %}
+             
+        <div class="flex w-auto  pl-12 <<< lg:pl-0">
+
+          
+     <div class=" mt-20  ml-4 ">
+    {% if messages.user.avatar.url %}
+    <a href="{% url 'user-profile' messages.user.id %}">
+  <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{messages.user.avatar.url}}');">
+  </div>
+  </a>
+    {% endif %}
+          </div>
+
+  <div class="flex flex-col space-y-3 mt-10 pl-3 ">
+    <span id="like-count" data-message-id="{{messages.id}}" class="text-xs text-gray-400 cursor-pointer">
+  
+      {% if request.user in messages.likes.all %}
+      <a href="{% url 'like-message' messages.id %}"><i class="fa-solid fa-heart" style="color: #ec092b;"></i></a>
+      {% else %}
+      <a href="{% url 'like-message' messages.id %}"><i class="fa-regular fa-heart" style="color: #ec092b;"></i></a>
+      {% endif %}
+  
+      <span id="like-count"> {{messages.likes.count}}</span></span>
+  
+    {% if request.user == messages.user %}
+    <span class="text-xs text-gray-400 cursor-pointer"><a href="{% url 'edit-message' messages.id %}"><i
+          class="fa-solid fa-pen-to-square"></i></a></span>
+  
+    <span class="cursor-pointer text-xs"> <a href="{% url 'delete-message' messages.id %}"><i class="fa-solid fa-trash"
+          style="color: #db0606;"></i></a><span></span>
+      {% endif %}
+  
+  </div>
+
+            <div class="bg-gray-200 w-72 p-5 mt-7 ml-1 rounded-r-3xl rounded-tl-2xl">
+                 <span class="text-xs text-gray-400">{{messages.user.username}}</span>
+                <p class="text-base m-1">
+                 {{messages.body}}
+            </p>
+             </div>
+             
+             
+         </div>
+     {% endif %}
+    
+
+
+           {% if messages.user == messages.room.host %}
+        <div class="flex  pl-28 <<< md:pl-60 lg:56 lg:pl-60">
+     
+        <div class="bg-gray-300 w-72 p-4 mt-7 rounded-l-3xl  rounded-tr-2xl " style="height: fit-content;" >
+            <span class="text-xs text-gray-400">{{messages.room.host.username}}</span>
+        <p class="text-base m-1">{{messages.body}}
+        </p>
+        </div>
+             <div class="flex flex-col space-y-3 mt-10 pl-3 ">
+                    <span id="like-count"data-message-id="{{messages.id}}" class="text-xs text-gray-400 cursor-pointer">
+                      
+                      {% if request.user in messages.likes.all %}
+                      <a href="{% url 'like-message' messages.id %}"><i class="fa-solid fa-heart" style="color: #ec092b;"></i></a>
+                        {% else %}
+                   <a href="{% url 'like-message' messages.id %}"><i class="fa-regular fa-heart" style="color: #ec092b;"></i></a>
+                      {% endif %}
+                        
+                    <span id="like-count"> {{messages.likes.count}}</span></span>
+          
+                  {% if request.user == messages.user %}
+                   <span class="text-xs text-gray-400 cursor-pointer"><a href="{% url 'edit-message' messages.id %}"><i class="fa-solid fa-pen-to-square"></i></a></span>
+
+                    <span class="cursor-pointer text-xs"> <a href="{% url 'delete-message' messages.id %}"><i class="fa-solid fa-trash" style="color: #db0606;"></i></a><span></span>
+            {% endif %}
+
+            </div>
+        <div class="mt-20 ml-1">
+       
+          
+       
+    {% if messages.room.host.avatar.url %}
+    <a href="{% url 'user-profile' messages.room.host.id %}">
+  <div class="border-2 border-gray-300 rounded-full p-4 mt-2 bg-no-repeat  bg-cover bg-center " style="background-image: url('{{messages.room.host.avatar.url}}'); width:10px">
+  </div>
+  </a>
+    {% endif %}
+        </div>
+
+        </div>
+          {% endif %}
+ {% endfor %}
+         
+
+        {% else %}
+        <div class="flex w-auto flex-start animate-pulse">
+            <div class=" mt-20  ml-4 ">
+            <img class="rounded-full border-2 border-gray-300" width="30" src="{% static 'icons/lifestyle-students-talking-in-front-of-university-1.png' %}" alt="">
+          </div>
+            <div class="bg-gray-300 w-72 p-5 mt-7 ml-1 rounded-r-3xl rounded-tl-2xl">
+                
+                <p class="text-base m-1">
+                 {{message.body}}
+            </p>
+             </div>
+             
+         </div>
+
+
+        <div class="flex  pl-56 animate-pulse">
+        <div class="bg-gray-300 w-72 p-4 mt-7 rounded-l-3xl  rounded-tr-2xl ">
+        <p class="text-base m-1">{{message.body}}
+        </p>
+        </div>
+        <div class="mt-20 ml-1">
+        <img class="rounded-full border-2 border-gray-300"  width="30" src="{% static 'icons/lifestyle-students-talking-in-front-of-university-1.png' %}" alt="">
+        </div>
+
+        </div>
+            
+        {% endif %}
+            
+         
+
+       
+
+ </div>
+          {% include 'components/Room/messageComponent.html' %}
+           
+             
+        </div>
+    </div>
+
+
+    
+
+ 
