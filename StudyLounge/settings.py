@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'StudyLounge.wsgi.application'
+WSGI_APPLICATION = 'StudyLounge.wsgi.app'
 
 
 # Database
