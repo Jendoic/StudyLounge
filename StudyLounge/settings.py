@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -15,17 +16,14 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
-
+# SECRET_KEY = 'django-insecure-jn3kqz_knz+3v$aki@_iby#!t*!q@os%8dmf7!ii!xk28kgs1z'
 # SECURITY WARNING: don't run with debug turned on in production!
-<<<<<<< HEAD
-DEBUG = False
-=======
+
 
 DEBUG = env.bool("DJANGO_DEBUG",False)
 
+# DEBUG = True
 
-
->>>>>>> 044e7ef95dd855f98c7692198d64fc7560d76ff6
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
@@ -105,7 +103,16 @@ DATABASES = {
         }
     }
 
-
+# DATABASES = {
+#         'default': {
+#             'ENGINE':'django.db.backends.postgresql',
+#             'NAME': 'railway',
+#             'USER': 'postgres',
+#             'PASSWORD': 'PbRWOJqBtfTRaQEXXBMVaHxPlUQvApql',
+#             'HOST': 'monorail.proxy.rlwy.net',
+#             'PORT': 21653,
+#         }
+#     }
 
 # DATABASES = {
 #     'default': {
@@ -150,11 +157,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'static/images/'
+MEDIA_URL = 'images/'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build', 'static')
 STATICFILES_DIRS = BASE_DIR,'static'
-MEDIA_ROOT = BASE_DIR / 'static/images/'
+MEDIA_ROOT = BASE_DIR / 'images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -167,6 +174,12 @@ CLOUDINARY_STORAGE = {
     'API_KEY':  env.str('CLOUD_KEY'),
     'API_SECRET': env.str('CLOUD_SECRET'),
 }
+
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dsbsdt2dt',
+#     'API_KEY':  '443975594586159',
+#     'API_SECRET': 'uasrMnOwAnJnEG0iCs4wrgUTbPw',
+# }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
