@@ -1,0 +1,33 @@
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+   {% for message in messages %}
+     {% if message.tags == 'success' %}
+        <div class="container-message p-1 bg-gray-200 rounded-2xl flex flex-col mt-2 opacity-50">
+          <div class="text-center">
+          <strong><i class='bx bxs-check-circle' style='color:#2be410'></i> {{message}}</strong>
+          <button onclick="hiddenMessage()" type="button"><i class='bx bx-x'></i></button>
+        </div>
+      </div>
+        {% elif message.tags == 'error' %}
+        <div class="container-message p-1 bg-gray-200 rounded-2xl flex flex-col mt-2 opacity-50">
+          <div class="text-center">
+          <strong><i class='bx bxs-error-circle' style='color:#f10a0a'  ></i> {{message}}</strong>
+          <button onclick="hiddenMessage()"><i class='bx bx-x' ></i></button>
+        </div>
+      </div>
+       {% elif message.tags == 'warning' %}
+        <div class="container-message p-1 bg-gray-200 rounded-2xl flex flex-col mt-2 opacity-50">
+          <div class="text-center">
+          <strong><i class='bx bxs-error' style='color:#f1c10a'  ></i> {{message}}</strong>
+          <button onclick="hiddenMessage()" type="button"><i class='bx bx-x'></i></button>
+        </div>
+      </div>
+      {% elif message.tags == 'info' %}
+        <div class="container-message p-1 bg-gray-200 rounded-2xl flex flex-col mt-2 opacity-50">
+          <div class="text-center">
+          <strong><i class='bx bx-info-circle'></i>  {{message}}</strong>
+          <button onclick="hiddenMessage()" type="button"><i class='bx bx-x '></i></button>
+        </div>
+      </div>
+        {% endif %}
+
+        {% endfor %}
