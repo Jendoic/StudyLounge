@@ -1,26 +1,20 @@
-import os
+from os import path, getenv
 from pathlib import Path
-
-import environ
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Env 
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = getenv('SECRET_KEY')
 # SECRET_KEY = 'django-insecure-jn3kqz_knz+3v$aki@_iby#!t*!q@os%8dmf7!ii!xk28kgs1z'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG = env.bool("DJANGO_DEBUG",False)
+DEBUG = getenv("DJANGO_DEBUG",True)
 
 # DEBUG = True
 
@@ -71,7 +65,7 @@ ROOT_URLCONF = 'StudyLounge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':[os.path.join(BASE_DIR, 'templates')],
+        'DIRS':[path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,19 +83,19 @@ WSGI_APPLICATION = 'StudyLounge.wsgi.app'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-
-
 DATABASES = {
-        'default': {
-            'ENGINE':'django.db.backends.postgresql',
-            'NAME': env.str('DATABASE_NAME'),
-            'USER': env.str('DATABASE_USER'),
-            'PASSWORD': env.str('DATABASE_PASSWORD'),
-            'HOST': env.str('DATABASE_HOST'),
-            'PORT': env.int('DATABASE_PORT'),
-        }
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': getenv('PGDATABASE'),
+    'USER': getenv('PGUSER'),
+    'PASSWORD': getenv('PGPASSWORD'),
+    'HOST': getenv('PGHOST'),
+    'PORT': getenv('PGPORT', 5432),
+    'OPTIONS': {
+      'sslmode': 'require',
+    },
+  }
+}
 
 # DATABASES = {
 #         'default': {
@@ -159,8 +153,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'images/'
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build', 'static')
-STATICFILES_DIRS = BASE_DIR,'static'
+STATIC_ROOT = path.join(BASE_DIR,'staticfiles_build', 'static')
+STATICFILES_DIRS = [BASE_DIR,'static']
 MEDIA_ROOT = BASE_DIR / 'images/'
 
 # Default primary key field type
@@ -170,17 +164,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env.str('CLOUD_NAME'),
-    'API_KEY':  env.str('CLOUD_KEY'),
-    'API_SECRET': env.str('CLOUD_SECRET'),
+    'CLOUD_NAME': getenv('CLOUD_NAME'),
+    'API_KEY':  getenv('CLOUD_KEY'),
+    'API_SECRET': getenv('CLOUD_SECRET'),
 }
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'dsbsdt2dt',
-#     'API_KEY':  '443975594586159',
-#     'API_SECRET': 'uasrMnOwAnJnEG0iCs4wrgUTbPw',
-# }
+
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
